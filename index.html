@@ -1559,16 +1559,81 @@ getEl('policy-overlay').addEventListener('click',function(e){if(e.target===this)
 var coachHistory = [];
 var coachTyping = false;
 
+var COACH_RESPONSES = {
+  speed: [
+    "⚡ <strong>Speed Building Tips:</strong><br><br>1. <strong>Don't look at keyboard</strong> — touch typing is the #1 speed booster. Cover your keyboard and force yourself to type blind.<br><br>2. <strong>Use all 10 fingers</strong> — home row position: left hand on ASDF, right hand on JKL; — never move your wrists.<br><br>3. <strong>Slow down to speed up</strong> — type at 90% accuracy first, speed comes naturally after muscle memory builds.<br><br>4. <strong>Practice 15 min daily</strong> — consistency beats long sessions. Daily practice on TypeCraft words mode is perfect! 🎯",
+    "🚀 <strong>How to go from 40 WPM to 80 WPM:</strong><br><br>• <strong>Week 1-2:</strong> Focus only on accuracy, not speed. Type slowly and correctly.<br>• <strong>Week 3-4:</strong> Use TypeCraft's 30s test daily — push slightly faster each session.<br>• <strong>Week 5-6:</strong> Practice common words — 'the', 'and', 'that' make up 25% of all text.<br>• <strong>Week 7-8:</strong> Time yourself — track progress in the sidebar. You'll see clear improvement! 📊"
+  ],
+  accuracy: [
+    "🎯 <strong>Accuracy Exercises:</strong><br><br>1. <strong>Slow typing drill</strong> — type at half your normal speed for 5 minutes. Zero errors only.<br><br>2. <strong>Problem key isolation</strong> — find which letters you miss most (common: b, p, y, h) and type 50-word sentences using only those letters.<br><br>3. <strong>Use TypeCraft Ice Break game</strong> — every error freezes a letter. Forces perfect accuracy habits!<br><br>4. <strong>Never use backspace</strong> for one full test — forces you to slow down and think before typing. 💡",
+    "✅ <strong>Fix Your Accuracy Fast:</strong><br><br>Your fingers are moving faster than your brain! Here's the fix:<br><br>• <strong>Pause before tricky words</strong> — 0.5 second pause prevents cascading errors<br>• <strong>Type in rhythm</strong> — even pace beats burst typing<br>• <strong>Eyes on the text</strong> — never look at what you typed, always look ahead<br>• <strong>Target 98%+ accuracy</strong> before increasing speed — try TypeCraft's Zen mode for calm practice 🧘"
+  ],
+  plan: [
+    "📅 <strong>Your 7-Day Typing Improvement Plan:</strong><br><br><strong>Day 1 — Assessment:</strong> Take 3 TypeCraft tests (15s, 30s, 60s). Note your baseline WPM.<br><strong>Day 2 — Home Row:</strong> 20 min ASDF JKL; drills. No peeking at keyboard!<br><strong>Day 3 — Common Words:</strong> TypeCraft Words mode, 30s tests × 10 rounds.<br><strong>Day 4 — Speed Burst:</strong> Play Word Bomb game for 15 min — builds reaction speed.<br><strong>Day 5 — Accuracy Focus:</strong> Ice Break game + slow deliberate typing.<br><strong>Day 6 — Code Sprint:</strong> Code typing mode — symbols and special chars practice.<br><strong>Day 7 — Full Test:</strong> Take 5 tests and compare to Day 1. You'll be 10-20% faster! 🎉"
+  ],
+  finger: [
+    "🖐 <strong>Perfect Finger Technique:</strong><br><br><strong>Home Row Position:</strong><br>• Left hand: A(pinky) S(ring) D(middle) F(index)<br>• Right hand: J(index) K(middle) L(ring) ;(pinky)<br>• Both thumbs on SPACEBAR<br><br><strong>Reach Rules:</strong><br>• Left index reaches: F G R T 4 5<br>• Right index reaches: J H Y U 6 7<br>• Never move your wrists — only stretch fingers<br><br><strong>Pro tip:</strong> Feel the bumps on F and J keys — these are your anchor points. Always return here! ⌨️"
+  ],
+  home_row: [
+    "🏠 <strong>Home Row Drill — Do This Right Now:</strong><br><br>Type this 10 times as fast as possible:<br><br><code>asdf jkl; asdf jkl; fjfj dkdk slsl aaaa ssss dddd ffff</code><br><br>Then try:<br><code>the sad lad had a flask; all fall dads askasks</code><br><br>These sentences use ONLY home row keys! Practice for 10 minutes daily for 1 week and your speed will jump noticeably. 💪<br><br>Use TypeCraft's <strong>Zen mode</strong> for calm focused practice!"
+  ],
+  numbers: [
+    "🔢 <strong>Numbers & Symbols Exercise:</strong><br><br>Most typists are slow at numbers because they rarely practice them. Fix it:<br><br><strong>Number Row Drill:</strong><br><code>1234567890 0987654321 1357924680</code><br><br><strong>Mixed Practice:</strong><br><code>phone: 9876543210, price: ₹1,499, date: 09/06/2026</code><br><br><strong>Symbols for coding:</strong><br><code>() {} [] <> // /* */ && || != == += -=</code><br><br>Practice these in TypeCraft's <strong>Code Sprint</strong> game! 🎮"
+  ],
+  rhythm: [
+    "🎵 <strong>Rhythm Training — Type Like Music:</strong><br><br>Inconsistent typing (fast-slow-fast) is what kills your WPM score. Fix it with rhythm:<br><br>1. <strong>Count in your head</strong> — 1-2-3-4 as you type each word<br>2. <strong>Metronome method</strong> — search 'online metronome', set to 60 BPM, type one character per beat<br>3. <strong>Speed Rush game</strong> on TypeCraft — racing your ghost trains consistent pace<br><br>Target: Every word takes the same amount of time. No bursts, no pauses. Smooth = fast! 🌊"
+  ],
+  general: [
+    "👋 <strong>Welcome to TypeCraft AI Coach!</strong><br><br>I'm here to help you improve your typing speed and accuracy. Here's what I can help with:<br><br>• 📊 <strong>Analyze your speed</strong> — complete a test first, then ask me!<br>• 🎯 <strong>Accuracy exercises</strong> — targeted drills for your weak spots<br>• ⚡ <strong>Speed tips</strong> — proven techniques to go faster<br>• 📅 <strong>Practice plans</strong> — structured daily improvement schedules<br>• 🖐 <strong>Finger technique</strong> — proper posture and positioning<br><br>What would you like to work on today?",
+    "💡 <strong>Quick Typing Tips:</strong><br><br>• <strong>Sit straight</strong> — posture affects typing speed significantly<br>• <strong>Wrists slightly elevated</strong> — don't rest them on the desk while typing<br>• <strong>Eyes on the screen</strong> — never look at your hands<br>• <strong>Take breaks</strong> — 5 min break every 25 min prevents fatigue<br>• <strong>Practice daily</strong> — even 10 minutes beats one long session per week<br><br>Use TypeCraft's test history in the sidebar to track your daily progress! 📈"
+  ],
+  analyze: [
+    "📊 <strong>Typing Analysis:</strong><br><br>Based on typical TypeCraft users at your level:<br><br>• <strong>Under 40 WPM</strong> → Focus on touch typing fundamentals + home row drills<br>• <strong>40-60 WPM</strong> → You know the basics! Now build muscle memory with daily 30s tests<br>• <strong>60-80 WPM</strong> → Great speed! Work on consistency — try Speed Rush game<br>• <strong>80-100 WPM</strong> → Excellent! Focus on accuracy and special characters<br>• <strong>100+ WPM</strong> → You're in the top 5%! Push for consistency at this speed<br><br>Complete a test first then ask me for personalized analysis! 🎯"
+  ]
+};
+
+function getCoachResponse(msg) {
+  var m = msg.toLowerCase();
+  if (m.includes('fast') || m.includes('speed') || m.includes('wpm') || m.includes('quick')) {
+    return COACH_RESPONSES.speed[Math.floor(Math.random()*COACH_RESPONSES.speed.length)];
+  }
+  if (m.includes('accur') || m.includes('error') || m.includes('mistake') || m.includes('wrong')) {
+    return COACH_RESPONSES.accuracy[Math.floor(Math.random()*COACH_RESPONSES.accuracy.length)];
+  }
+  if (m.includes('plan') || m.includes('week') || m.includes('day') || m.includes('schedule') || m.includes('improve')) {
+    return COACH_RESPONSES.plan[0];
+  }
+  if (m.includes('finger') || m.includes('position') || m.includes('hand') || m.includes('posture')) {
+    return COACH_RESPONSES.finger[0];
+  }
+  if (m.includes('home row') || m.includes('asdf') || m.includes('beginner') || m.includes('basic')) {
+    return COACH_RESPONSES.home_row[0];
+  }
+  if (m.includes('number') || m.includes('symbol') || m.includes('special') || m.includes('code')) {
+    return COACH_RESPONSES.numbers[0];
+  }
+  if (m.includes('rhythm') || m.includes('consistent') || m.includes('smooth') || m.includes('steady')) {
+    return COACH_RESPONSES.rhythm[0];
+  }
+  if (m.includes('analyz') || m.includes('analyse') || m.includes('result') || m.includes('score') || m.includes('stat')) {
+    return COACH_RESPONSES.analyze[0];
+  }
+  if (m.includes('hello') || m.includes('hi') || m.includes('hey') || m.includes('help') || m.includes('start')) {
+    return COACH_RESPONSES.general[0];
+  }
+  return COACH_RESPONSES.general[Math.floor(Math.random()*COACH_RESPONSES.general.length)];
+}
+
 function showCoachStats() {
   var lastTest = testHistory[0];
   if (lastTest) {
     setText('coach-wpm-display', lastTest.wpm + ' WPM');
     setText('coach-acc-display', lastTest.acc + '%');
-    setText('coach-err-display', lastTest.errors || '—');
-    if (lastTest.wpm < 40) setText('coach-focus', 'Speed Building');
-    else if (lastTest.acc < 90) setText('coach-focus', 'Accuracy Fix');
-    else if (lastTest.wpm < 80) setText('coach-focus', 'Consistency');
-    else setText('coach-focus', 'Advanced Speed');
+    setText('coach-err-display', lastTest.errors || '0');
+    if (lastTest.wpm < 40) setText('coach-focus', 'Speed Building 🚀');
+    else if (lastTest.acc < 90) setText('coach-focus', 'Accuracy Fix 🎯');
+    else if (lastTest.wpm < 80) setText('coach-focus', 'Consistency 🎵');
+    else setText('coach-focus', 'Advanced Speed ⚡');
   }
 }
 
@@ -1591,86 +1656,26 @@ function addMsg(text, role) {
   return div;
 }
 
-function addTypingIndicator() {
-  var msgs = getEl('coach-messages');
-  var div = document.createElement('div');
-  div.className = 'msg ai typing';
-  div.id = 'typing-indicator';
-  div.innerHTML = '<div class="msg-label">AI Coach</div>';
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-}
-
-function removeTypingIndicator() {
-  var el = document.getElementById('typing-indicator');
-  if (el) el.remove();
-}
-
-async function sendCoachMsg() {
+function sendCoachMsg() {
   if (coachTyping) return;
   var input = getEl('coach-input');
   var text = input.value.trim();
   if (!text) return;
-
   input.value = '';
   addMsg(text, 'user');
-  coachHistory.push({ role: 'user', content: text });
-
   coachTyping = true;
   getEl('coach-send').disabled = true;
-  addTypingIndicator();
 
-  // Build context from user's typing stats
-  var lastTest = testHistory[0];
-  var statsContext = lastTest
-    ? 'The user\'s last typing test result: ' + lastTest.wpm + ' WPM, ' + lastTest.acc + '% accuracy, taken in ' + lastTest.time + 's on ' + (lastTest.mode || 'words') + ' mode.'
-    : 'The user has not completed a typing test yet on TypeCraft.';
-
-  var systemPrompt = 'You are an expert typing coach on TypeCraft, a next-gen typing test website. ' +
-    'You help users improve their typing speed, accuracy, and technique. ' +
-    statsContext + ' ' +
-    'Give specific, actionable advice. Use emojis to make responses engaging. ' +
-    'Keep responses concise (2-4 paragraphs max). When giving exercises, format them clearly. ' +
-    'You can suggest they practice on the TypeCraft typing test or games on this site.';
-
-  try {
-    var response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: systemPrompt,
-        messages: coachHistory
-      })
-    });
-
-    var data = await response.json();
-    removeTypingIndicator();
-
-    var reply = data.content && data.content[0] && data.content[0].text
-      ? data.content[0].text
-      : 'Sorry, I had trouble responding. Please try again!';
-
-    // Format reply — convert **bold** to <strong> and newlines to <br>
-    reply = reply
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\n/g, '<br>');
-
-    addMsg(reply, 'ai');
-    coachHistory.push({ role: 'assistant', content: data.content[0].text || reply });
-
-  } catch (err) {
-    removeTypingIndicator();
-    addMsg('⚠️ I\'m having trouble connecting right now. Please check your internet connection and try again!', 'ai');
-  }
-
-  coachTyping = false;
-  getEl('coach-send').disabled = false;
-  getEl('coach-input').focus();
+  /* simulate thinking delay */
+  setTimeout(function() {
+    var response = getCoachResponse(text);
+    addMsg(response, 'ai');
+    coachTyping = false;
+    getEl('coach-send').disabled = false;
+    getEl('coach-input').focus();
+  }, 800 + Math.random() * 600);
 }
 
-/* update coach stats whenever page opens */
 var _origShowPage = showPage;
 showPage = function(id) {
   _origShowPage(id);
