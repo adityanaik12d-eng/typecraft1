@@ -189,7 +189,10 @@ kbd{background:var(--surface);border:1px solid var(--border2);border-radius:4px;
 .lb-row{border-bottom:1px solid var(--border);transition:background .2s}
 .lb-row:last-child{border-bottom:none}
 .lb-row:hover{background:var(--surface)}
-.lb-row.t1{background:rgba(247,194,106,.04)}.lb-row.t2{background:rgba(200,200,220,.03)}.lb-row.t3{background:rgba(180,120,60,.03)}
+.lb-row.t1{background:linear-gradient(135deg,rgba(247,194,106,.08),rgba(30,144,255,.05))}
+.lb-row.t1 .pname{color:var(--accent4);font-size:15px}
+.lb-row.t1 .wpm-c{font-size:24px;text-shadow:0 0 20px rgba(30,144,255,.4)}
+.rank.gold{color:var(--accent4);font-size:20px}
 .rank{font-family:var(--fm);font-size:14px;font-weight:700;color:var(--muted)}
 .rank.gold{color:var(--accent4)}.rank.silver{color:#b0b0c8}.rank.bronze{color:#c87840}
 .player-info{display:flex;align-items:center;gap:10px}
@@ -721,20 +724,21 @@ footer{background:var(--bg2);border-top:1px solid var(--border);position:relativ
   <div class="profile-hero">
     <div class="profile-av">AN</div>
     <div class="profile-info">
-      <h2>Aditya Naik</h2>
-      <p>Creator of TypeCraft · Rank #247 globally</p>
+      <h2>Aditya Naik 👑</h2>
+      <p>Creator of TypeCraft · Rank #1 Globally · Undefeated Champion</p>
       <div class="profile-badges">
+        <span class="badge bg">👑 GOAT</span>
         <span class="badge bg">⚡ God Mode</span>
         <span class="badge bs">🚀 Speed Demon</span>
-        <span class="badge bf">🔥 On Fire</span>
+        <span class="badge bf">🔥 Undefeated</span>
       </div>
     </div>
   </div>
   <div class="p-stats">
-    <div class="p-stat"><span class="p-val" style="color:var(--accent)">147</span><span class="p-lbl">Best WPM</span></div>
-    <div class="p-stat"><span class="p-val" style="color:var(--accent2)">98.4%</span><span class="p-lbl">Avg Accuracy</span></div>
-    <div class="p-stat"><span class="p-val" style="color:var(--accent4)">1,247</span><span class="p-lbl">Tests Taken</span></div>
-    <div class="p-stat"><span class="p-val" style="color:var(--accent3)">34h</span><span class="p-lbl">Total Time</span></div>
+    <div class="p-stat"><span class="p-val" style="color:var(--accent)">287</span><span class="p-lbl">Best WPM</span></div>
+    <div class="p-stat"><span class="p-val" style="color:var(--accent2)">99.9%</span><span class="p-lbl">Avg Accuracy</span></div>
+    <div class="p-stat"><span class="p-val" style="color:var(--accent4)">99,999</span><span class="p-lbl">Tests Taken</span></div>
+    <div class="p-stat"><span class="p-val" style="color:var(--accent3)">999h</span><span class="p-lbl">Total Time</span></div>
   </div>
   <div class="chart-wrap">
     <div class="chart-title">WPM — Last 20 Tests</div>
@@ -1365,16 +1369,16 @@ function playClickSound(){
 
 /* ============================================================ LEADERBOARD */
 var LB_PLAYERS=[
-  {name:'NightOwl',tag:'speedrunner',wpm:287,acc:99.1,tests:4821,badge:'bg',bt:'⚡ Legend'},
-  {name:'VelociType',tag:'professional',wpm:264,acc:98.7,tests:2940,badge:'bs',bt:'🚀 Speed'},
-  {name:'KeyGod99',tag:'competitive',wpm:251,acc:97.9,tests:3215,badge:'bf',bt:'🔥 Fire'},
-  {name:'qwertymastah',tag:'casual',wpm:234,acc:99.4,tests:1876,badge:'bg',bt:'⚡ Legend'},
-  {name:'FingerFlash',tag:'streamer',wpm:221,acc:96.8,tests:5401,badge:'bs',bt:'🚀 Speed'},
-  {name:'TypeStorm',tag:'pro',wpm:218,acc:97.2,tests:2103,badge:'bs',bt:'🚀 Speed'},
-  {name:'AlphaKeys',tag:'verified',wpm:209,acc:98.1,tests:1654,badge:'bg',bt:'⚡ Legend'},
-  {name:'SwiftFingers',tag:'casual',wpm:196,acc:95.9,tests:987,badge:'bf',bt:'🔥 Fire'},
-  {name:'ByteRacer',tag:'developer',wpm:188,acc:99.0,tests:744,badge:'bs',bt:'🚀 Speed'},
-  {name:'Aditya Naik',tag:'creator',wpm:147,acc:98.4,tests:1247,badge:'bf',bt:'🔥 Creator'},
+  {name:'Aditya Naik',tag:'👑 Creator & Champion',wpm:287,acc:99.9,tests:9999,badge:'bg',bt:'👑 GOAT'},
+  {name:'NightOwl',tag:'speedrunner',wpm:201,acc:99.1,tests:4821,badge:'bg',bt:'⚡ Legend'},
+  {name:'VelociType',tag:'professional',wpm:189,acc:98.7,tests:2940,badge:'bs',bt:'🚀 Speed'},
+  {name:'KeyGod99',tag:'competitive',wpm:176,acc:97.9,tests:3215,badge:'bf',bt:'🔥 Fire'},
+  {name:'qwertymastah',tag:'casual',wpm:164,acc:99.4,tests:1876,badge:'bg',bt:'⚡ Legend'},
+  {name:'FingerFlash',tag:'streamer',wpm:158,acc:96.8,tests:5401,badge:'bs',bt:'🚀 Speed'},
+  {name:'TypeStorm',tag:'pro',wpm:152,acc:97.2,tests:2103,badge:'bs',bt:'🚀 Speed'},
+  {name:'AlphaKeys',tag:'verified',wpm:144,acc:98.1,tests:1654,badge:'bg',bt:'⚡ Legend'},
+  {name:'SwiftFingers',tag:'casual',wpm:138,acc:95.9,tests:987,badge:'bf',bt:'🔥 Fire'},
+  {name:'ByteRacer',tag:'developer',wpm:121,acc:99.0,tests:744,badge:'bs',bt:'🚀 Speed'},
 ];
 var AV_COLORS=['#7c6af7','#5ddba8','#f76a6a','#f7c26a','#6aaff7','#f76ac8'];
 function renderLB(){
@@ -1471,7 +1475,7 @@ function mpTick(){if(!mpStarted)return;var e=(Date.now()-mpStartTime)/1000;MP_PL
 function mpPlayerFinish(p){if(p.finished)return;p.finished=true;p.prog=1;mpFinishCount++;p.rank=mpFinishCount;var pe=document.getElementById('mp-prog-'+p.name);if(pe)pe.style.width='100%';var track=document.getElementById('mp-track-'+p.name);if(track){var b=document.createElement('span');b.className='finish-badge show';var medals=['🥇','🥈','🥉','4th','5th','6th'];b.textContent=medals[p.rank-1]||p.rank+'th';b.style.background=p.color+'22';b.style.color=p.color;b.style.marginLeft='8px';var we=document.getElementById('mp-wpm-'+p.name);if(we)we.after(b);}if(!p.ai){clearInterval(mpTimer);mpStarted=false;getEl('mp-input').disabled=true;renderMP(false);}}
 
 /* ============================================================ PROFILE */
-function renderChart(){var data=[88,92,95,89,101,98,107,112,118,115,121,119,128,131,126,138,135,142,139,147];var max=Math.max.apply(null,data);var wrap=getEl('wpm-chart');wrap.innerHTML='';data.forEach(function(v){var bar=document.createElement('div');bar.className='bar'+(v===max?' best':'');bar.style.height=Math.round(v/max*100)+'%';bar.title=v+' WPM';wrap.appendChild(bar);});}
+function renderChart(){var data=[241,255,260,258,265,270,268,275,272,278,280,277,281,283,279,284,285,286,284,287];var max=Math.max.apply(null,data);var wrap=getEl('wpm-chart');wrap.innerHTML='';data.forEach(function(v){var bar=document.createElement('div');bar.className='bar'+(v===max?' best':'');bar.style.height=Math.round(v/max*100)+'%';bar.title=v+' WPM';wrap.appendChild(bar);});}
 
 /* ============================================================ SETTINGS */
 var THEMES=[
